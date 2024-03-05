@@ -29,6 +29,7 @@ public class Ex01FirstServlet extends HttpServlet {
 		 * service
 		 * 
 		 * request / response 는 Interface
+		 * 값을 입력하는 순간 구현되어 채워짐
 		 * 
 		 * request(요청 객체) 접속하면 client 접속 정보를 받아옴 client가 요청한 모든 정보를 가지고 있음
 		 * 

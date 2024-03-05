@@ -39,20 +39,40 @@ public class Ex04Lunch extends HttpServlet {
 		Random ran = new Random();
 		PrintWriter out = response.getWriter();
 		String lunch = request.getParameter("lunch");
-
+		
+		out.print("<html>");
+		out.print("<body align = 'center'>");
+		out.print("<h1>");
+		out.print("오늘 추천 메뉴는 ");
 		if (lunch.equals("한식")) {
 			int kIndex = ran.nextInt(kList.length);
 			String kFood = kList[kIndex];
 			out.print(kFood);
 		} else if (lunch.equals("중식")) {
 			int cIndex = ran.nextInt(cList.length);
-			String cFood = kList[cIndex];
+			String cFood = cList[cIndex];
 			out.print(cFood);
 		} else if (lunch.equals("일식")) {
 			int jIndex = ran.nextInt(jList.length);
-			String jFood = kList[jIndex];
+			String jFood = jList[jIndex];
 			out.print(jFood);
 		}
+		out.print(" 입니다");
+		out.print("</h1>");
+		out.print("</body>");
+		out.print("</html>");
+		
+		/*선생님 코드
+		 * 
+		 * String menu = null;
+		 * if (lunch.equals("한식")){
+		 * 		menu = kList[ran.nextInt(kList.length)];
+		 * }
+		 * if else(){
+		 * }....
+		 * out.print(menu)
+		 * 
+		 * */
 
 	}
 

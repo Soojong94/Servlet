@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<fieldset>
+		<legend>Join Page</legend>
+
+		<form action="EX08Join" method="post">
+			<table>
+				<tr>
+					<td>ID</td>
+					<td><input type="text" name="id"></td>
+				</tr>
+				<tr>
+					<td>PW</td>
+					<td><input type="password" name="pw"></td>
+				</tr>
+				<tr>
+					<td>GENDER</td>
+					<td>
+						남자<input type="radio" value = "남자" name="gender">
+						여자<input type="radio" value = "여자" name="gender">
+					</td>
+				</tr>		
+				<tr>
+					<td>Hobby</td>
+					<td>
+					여행<input type = "checkbox" name = "hobby" value = "여행">
+					운동<input type = "checkbox" name = "hobby" value = "운동">
+					영화<input type = "checkbox" name = "hobby" value = "영화">
+					먹기<input type = "checkbox" name = "hobby" value = "먹기">
+					음악<input type = "checkbox" name = "hobby" value = "음악">
+					기타<input type = "checkbox" name = "hobby" value = "기타">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="Join"></td>
+				</tr>
+
+			</table>
+
+		</form>
+	</fieldset>
+
+</body>
+</html>
+
