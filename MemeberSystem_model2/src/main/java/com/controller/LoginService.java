@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
+import com.model.MemberDAO;
 import com.model.MemberDTO;
 
 /**
@@ -35,69 +36,13 @@ public class LoginService extends HttpServlet {
 		request.setCharacterEncoding("EUC-KR");
 		String input_id = request.getParameter("id");
 		String input_pw = request.getParameter("pw");
-		MemberDTO info = null;
-		Connection conn = null;
-		PreparedStatement psmt = null;
-		ResultSet rs = null;
 		HttpSession session = request.getSession();
 		
-		try {
+		MemberDTO dto = new MemberDTO(input_id, input_pw);
+		MemberDAO dao = new MemberDAO();
+		MemberDTO info = dao.login(dto);
+		
 
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String db_url = "jdbc:oracle:thin:@localhost:1521:xe";
-			String db_id = "HR";
-			String db_pw = "hr";
-			conn = DriverManager.getConnection(db_url, db_id, db_pw);
-
-			if (conn != null) {
-				System.out.println("Connection 연결 성공");
-			} else {
-				System.out.println("Connection 연결 실패");
-			}
-
-			String sql = "SELECT * FROM MEMBER WHERE ID =  ?  AND PW = ?";
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, input_id);
-			psmt.setString(2, input_pw);
-			rs = psmt.executeQuery();
-
-			if (rs.next()) {
-
-				// 로그인이 성공했을 때
-
-				String id = rs.getString("ID");
-				String pw = rs.getString("PW");
-				String nick = rs.getString("NICK");
-				String phone = rs.getString("PHONE");
-
-				info = new MemberDTO(id, pw, nick, phone);
-			}
-
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		finally {
-			try {
-				if (rs != null) {
-					rs.close();
-				}
-				if (psmt != null) {
-					psmt.close();
-				}
-				if (conn != null) {
-					conn.close();
-					System.out.println("연결 종료");
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
 		if (info == null){
 			// 로그인 실패
 			response.sendRedirect("Login.jsp");

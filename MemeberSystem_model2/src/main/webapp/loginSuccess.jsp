@@ -20,6 +20,19 @@
 	<h1 align = "center"><%=info.getNick() %> 님 혼저옵서예</h1>
 	
 	<a href = "LogoutService">로그아웃</a>
+	<br>
+	
+	<%--  관리자만 볼 수 있는 기능 --%>
+	
+	<% if (info.getId().equals("admin")){
+		
+		out.print("<a href = 'MemberListService'>");
+		out.print("회원정보보기");
+		out.print("</a>");
+
+	}
+		
+		%>
 	
 	
 	

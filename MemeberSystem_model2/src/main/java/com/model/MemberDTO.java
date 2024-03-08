@@ -13,6 +13,16 @@ public class MemberDTO {
 	public String toString() {
 		return "MemberDTO [id=" + id + ", pw=" + pw + ", nick=" + nick + ", phone=" + phone + "]";
 	}
+	
+	
+
+	public MemberDTO(String id, String pw) {
+		super();
+		this.id = id;
+		this.pw = pw;
+	}
+
+
 
 	public MemberDTO(String id, String pw, String nick, String phone) {
 		super();
